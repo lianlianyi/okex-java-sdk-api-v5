@@ -18,3 +18,4 @@ target/
 #logs
 /logs/
 /transaction-logs/
+/src/test/java/com/okex/open/api/test/

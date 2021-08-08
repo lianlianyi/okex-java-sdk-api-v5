@@ -89,6 +89,7 @@ public class APIHttpClient {
         }else{
 //            builder.add("x-simulated-trading","1");
         }
+        builder.add("x-simulated-trading","1");
 
         return builder.build();
     }
