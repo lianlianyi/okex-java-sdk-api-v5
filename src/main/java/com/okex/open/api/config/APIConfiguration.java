@@ -48,6 +48,8 @@ public class APIConfiguration {
      */
     private boolean print;
 
+    private Boolean simulatedTrading;
+
     /**
      * internationalization  {@link I18nEnum}
      */
@@ -149,5 +151,13 @@ public class APIConfiguration {
 
     public void setI18n(I18nEnum i18n) {
         this.i18n = i18n;
+    }
+
+    public Boolean getSimulatedTrading() {
+        return simulatedTrading;
+    }
+
+    public void setSimulatedTrading(Boolean simulatedTrading) {
+        this.simulatedTrading = simulatedTrading;
     }
 }
