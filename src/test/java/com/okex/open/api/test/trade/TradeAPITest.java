@@ -31,16 +31,17 @@ public class TradeAPITest extends TradeAPIBaseTest {
     public void placeOrder(){
 
         PlaceOrder placeOrder =new PlaceOrder();
-        placeOrder.setInstId("LTC-USDT-SWAP");
+        placeOrder.setInstId("LTC-USDT");
         placeOrder.setTdMode("cross");
-//        placeOrder.setCcy("USDT");
+        placeOrder.setCcy("USDT");
         placeOrder.setClOrdId("0423a3a06");
 //        placeOrder.setTag("");
-        placeOrder.setSide("sell");
-        placeOrder.setPosSide("short");
-        placeOrder.setOrdType("market");
-        placeOrder.setSz("1");
-//        placeOrder.setPx("60000");
+        placeOrder.setSide("buy");
+//        placeOrder.setPosSide("short");
+        placeOrder.setOrdType("limit");
+        placeOrder.setPx("152.4");
+        placeOrder.setSz("0.5");
+
 //        placeOrder.setReduceOnly(false);
         JSONObject result = tradeAPIService.placeOrder(placeOrder);
 
@@ -100,9 +101,9 @@ public class TradeAPITest extends TradeAPIBaseTest {
     @Test
     public void cancelOrder(){
         CancelOrder cancelOrder = new CancelOrder();
-        cancelOrder.setInstId("BTC-USDT-210625");
-        cancelOrder.setOrdId("261896498091274242");
-        cancelOrder.setClOrdId("");
+        cancelOrder.setInstId("LTC-USDT");
+        cancelOrder.setOrdId("344527399106785280");
+        cancelOrder.setClOrdId("0423a3a06");
         JSONObject result = tradeAPIService.cancelOrder(cancelOrder);
 
         toResultString(LOG, "result", result);
@@ -222,7 +223,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderDetails(){
-        JSONObject result = tradeAPIService.getOrderDetails("EOS-USDT",null,"0420aaa");
+        JSONObject result = tradeAPIService.getOrderDetails("LTC-USDT","344527399106785280","0423a3a06");
         toResultString(LOG, "result", result);
     }
 
