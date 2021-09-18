@@ -9,6 +9,7 @@ import com.okex.open.api.enums.HttpHeadersEnum;
 import com.okex.open.api.exception.APIException;
 import com.okex.open.api.utils.DateUtils;
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 public class APIClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(APIClient.class);
@@ -144,7 +146,7 @@ public class APIClient {
         } else {
             responseInfo.append("\n\t\t").append("\n\tRequest Error: response is null");
         }
-        APIClient.LOG.info(responseInfo.toString());
+        log.info(responseInfo.toString());
     }
 
     @Override

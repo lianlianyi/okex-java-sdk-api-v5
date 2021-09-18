@@ -6,12 +6,14 @@ import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.constant.APIConstants;
 import com.okex.open.api.exception.APIException;
 import com.okex.open.api.utils.DateUtils;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+@Slf4j
 public class ApiHttp {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApiHttp.class);
@@ -87,7 +89,8 @@ public class ApiHttp {
         } else {
             responseInfo.append("\n\t\t").append("\n\tRequest Error: response is null");
         }
-        LOG.info(responseInfo.toString());
+//        LOG.info(responseInfo.toString());
+        log.info(responseInfo.toString());
     }
 
     public String url(String url) {

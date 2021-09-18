@@ -7,6 +7,7 @@ import com.okex.open.api.enums.HttpHeadersEnum;
 import com.okex.open.api.exception.APIException;
 import com.okex.open.api.utils.DateUtils;
 import com.okex.open.api.utils.HmacSHA256Base64Utils;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okio.Buffer;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class APIHttpClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(APIHttpClient.class);
@@ -192,6 +194,7 @@ public class APIHttpClient {
         requestInfo.append("\n\t\t").append("request body: ").append(body);
         final String preHash = HmacSHA256Base64Utils.preHash(timestamp, method, requestPath, queryString, body);
         requestInfo.append("\n\t\t").append("preHash: ").append(preHash);
-        APIHttpClient.LOG.info(requestInfo.toString());
+//        APIHttpClient.LOG.info(requestInfo.toString());
+        log.info(requestInfo.toString());
     }
 }
