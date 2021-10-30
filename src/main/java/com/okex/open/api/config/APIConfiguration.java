@@ -3,7 +3,9 @@ package com.okex.open.api.config;
 import com.okex.open.api.constant.APIConstants;
 import com.okex.open.api.enums.I18nEnum;
 
-public class APIConfiguration {
+import java.io.Serializable;
+
+public class APIConfiguration implements Serializable {
 
     /**
      * The user's api key provided by OKEx.
