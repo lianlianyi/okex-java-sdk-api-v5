@@ -1,6 +1,8 @@
 package com.okex.open.api.bean.trade.param;
 
-public class CancelOrder {
+import java.io.Serializable;
+
+public class CancelOrder implements Serializable {
     private String instId;
     private String ordId;
     private String clOrdId;

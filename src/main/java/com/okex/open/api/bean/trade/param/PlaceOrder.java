@@ -1,6 +1,8 @@
 package com.okex.open.api.bean.trade.param;
 
-public class PlaceOrder {
+import java.io.Serializable;
+
+public class PlaceOrder implements Serializable {
     private String instId;
     private String tdMode;
     private String ccy;

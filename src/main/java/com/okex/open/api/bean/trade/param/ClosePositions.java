@@ -1,6 +1,8 @@
 package com.okex.open.api.bean.trade.param;
 
-public class ClosePositions {
+import java.io.Serializable;
+
+public class ClosePositions implements Serializable {
     private String instId;
     private String posSide;
     private String mgnMode;

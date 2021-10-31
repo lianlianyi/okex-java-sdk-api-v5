@@ -1,6 +1,8 @@
 package com.okex.open.api.bean.trade.param;
 
-public class AmendOrder {
+import java.io.Serializable;
+
+public class AmendOrder implements Serializable {
     private String instId;
     private Boolean cxlOnFail;
     private String ordId;
