@@ -9,16 +9,20 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+
 public class AccountAPITests extends  AccountAPIBaseTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountAPITests.class);
 
     private AccountAPIService accountAPIService;
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
 
     @Before
     public void before() {
         this.config = this.config();
-        this.accountAPIService = new AccountAPIServiceImpl(this.config);
+        this.accountAPIService = new AccountAPIServiceImpl(this.config,proxy);
     }
 
     /**

@@ -9,17 +9,20 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TradeAPITest extends TradeAPIBaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(TradeAPITest.class);
     private TradeAPIService tradeAPIService;
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
 
     @Before
     public void before() {
         config = config();
-        tradeAPIService = new TradeAPIServiceImpl(config);
+        tradeAPIService = new TradeAPIServiceImpl(config,proxy);
     }
 
 

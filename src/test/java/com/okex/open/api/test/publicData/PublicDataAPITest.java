@@ -1,7 +1,6 @@
 package com.okex.open.api.test.publicData;
 
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
 import com.okex.open.api.service.publicData.impl.PublicDataAPIServiceImpl;
@@ -10,15 +9,19 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+
 public class PublicDataAPITest extends PublicDataAPIBaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(PublicDataAPITest.class);
 
     private PublicDataAPIService publicDataAPIService;
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
 
     @Before
     public void before() {
         config = config();
-        publicDataAPIService = new PublicDataAPIServiceImpl(config);
+        publicDataAPIService = new PublicDataAPIServiceImpl(config,proxy);
     }
 
 

@@ -7,13 +7,15 @@ import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.funding.FundingAPIService;
 
+import java.net.Proxy;
+
 public class FundingAPIServiceImpl implements FundingAPIService {
 
     private APIClient client;
     private FundingAPI api;
 
-    public FundingAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
+    public FundingAPIServiceImpl(APIConfiguration config, Proxy proxy) {
+        this.client = new APIClient(config,proxy);
         this.api = client.createService(FundingAPI.class);
     }
 

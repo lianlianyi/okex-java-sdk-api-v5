@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.security.InvalidKeyException;
 import java.util.concurrent.TimeUnit;
 
@@ -51,12 +52,13 @@ public class APIHttpClient {
      *  3. Set default print api info: false.
      * </pre></blockquote>
      */
-    public OkHttpClient client() {
+    public OkHttpClient client(Proxy proxy) {
         final OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         clientBuilder.connectTimeout(this.config.getConnectTimeout(), TimeUnit.SECONDS);
         clientBuilder.readTimeout(this.config.getReadTimeout(), TimeUnit.SECONDS);
         clientBuilder.writeTimeout(this.config.getWriteTimeout(), TimeUnit.SECONDS);
         clientBuilder.retryOnConnectionFailure(this.config.isRetryOnConnectionFailure());
+        clientBuilder.proxy(proxy);
         clientBuilder.addInterceptor((Interceptor.Chain chain) -> {
             final Request.Builder requestBuilder = chain.request().newBuilder();
             final String timestamp = DateUtils.getUnixTime();

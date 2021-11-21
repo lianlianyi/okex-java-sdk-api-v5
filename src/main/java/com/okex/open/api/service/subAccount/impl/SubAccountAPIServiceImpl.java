@@ -9,14 +9,16 @@ import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.subAccount.SubAccountAPIService;
 
+import java.net.Proxy;
+
 public class SubAccountAPIServiceImpl implements SubAccountAPIService {
 
     private APIClient client;
     private SubAccountAPI api;
 
 
-    public SubAccountAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
+    public SubAccountAPIServiceImpl(APIConfiguration config, Proxy proxy) {
+        this.client = new APIClient(config,proxy);
         this.api = client.createService(SubAccountAPI.class);
     }
 

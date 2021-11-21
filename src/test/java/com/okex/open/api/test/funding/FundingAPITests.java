@@ -11,17 +11,21 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+
 public class FundingAPITests extends FundingAPIBaseTests {
 
     private static final Logger LOG = LoggerFactory.getLogger(FundingAPITests.class);
 
     private FundingAPIService fundingAPIService;
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
 
 
     @Before
     public void before() {
         config = config();
-        fundingAPIService = new FundingAPIServiceImpl(config);
+        fundingAPIService = new FundingAPIServiceImpl(config,proxy);
     }
 
 

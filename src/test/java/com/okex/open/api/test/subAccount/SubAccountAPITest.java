@@ -5,7 +5,6 @@ import com.okex.open.api.bean.subAccount.param.CreateSubAccountApikey;
 import com.okex.open.api.bean.subAccount.param.DelSunAccountApikey;
 import com.okex.open.api.bean.subAccount.param.ReSetSubAccountApikey;
 import com.okex.open.api.bean.subAccount.param.SubAccountTransfer;
-import com.okex.open.api.service.account.impl.AccountAPIServiceImpl;
 import com.okex.open.api.service.subAccount.SubAccountAPIService;
 import com.okex.open.api.service.subAccount.impl.SubAccountAPIServiceImpl;
 import org.junit.Before;
@@ -13,16 +12,20 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+
 public class SubAccountAPITest extends SubAccountAPIBaseTest{
 
     private static final Logger LOG = LoggerFactory.getLogger(SubAccountAPITest.class);
 
     private SubAccountAPIService subAccountAPIService;
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
 
     @Before
     public void before() {
         this.config = this.config();
-        this.subAccountAPIService = new SubAccountAPIServiceImpl(this.config);
+        this.subAccountAPIService = new SubAccountAPIServiceImpl(this.config,proxy);
     }
 
 

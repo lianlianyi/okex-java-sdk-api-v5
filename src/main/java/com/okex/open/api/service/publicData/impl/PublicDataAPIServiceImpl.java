@@ -1,17 +1,18 @@
 package com.okex.open.api.service.publicData.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
 
+import java.net.Proxy;
+
 public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     private APIClient client;
     private PublicDataAPI api;
 
-    public PublicDataAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
+    public PublicDataAPIServiceImpl(APIConfiguration config, Proxy proxy) {
+        this.client = new APIClient(config,proxy);
         this.api = client.createService(PublicDataAPI.class);
     }
 

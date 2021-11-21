@@ -20,6 +20,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
+import java.net.Proxy;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,13 +38,13 @@ public class APIClient {
     /**
      * Initialize the apis client
      */
-    public APIClient(final APIConfiguration config) {
+    public APIClient(final APIConfiguration config, Proxy proxy) {
         if (config == null || StringUtils.isEmpty(config.getEndpoint())) {
             throw new RuntimeException("The APIClient params can't be empty.");
         }
         this.config = config;
         this.credentials = new APICredentials(config);
-        this.client = new APIHttpClient(config, this.credentials).client();
+        this.client = new APIHttpClient(config, this.credentials).client(proxy);
         this.retrofit = new APIRetrofit(config, this.client).retrofit();
         this.apiHttp = new ApiHttp(config, this.client);
     }

@@ -7,14 +7,15 @@ import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.trade.TradeAPIService;
 
+import java.net.Proxy;
 import java.util.List;
 
 public class TradeAPIServiceImpl implements TradeAPIService {
     private final APIClient client;
     private final TradeAPI tradeAPI;
 
-    public TradeAPIServiceImpl(final APIConfiguration config) {
-        this.client = new APIClient(config);
+    public TradeAPIServiceImpl(final APIConfiguration config, Proxy proxy) {
+        this.client = new APIClient(config,proxy);
         this.tradeAPI = this.client.createService(TradeAPI.class);
     }
 

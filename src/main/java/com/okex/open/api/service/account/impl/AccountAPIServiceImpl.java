@@ -2,20 +2,26 @@ package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.param.IncreaseDecreaseMargin;
+import com.okex.open.api.bean.account.param.SetLeverage;
+import com.okex.open.api.bean.account.param.SetPositionMode;
+import com.okex.open.api.bean.account.param.SetTheDisplayTypeOfGreeks;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.account.AccountAPIService;
-import retrofit2.http.Query;
+
+import java.net.Proxy;
 
 public class AccountAPIServiceImpl implements AccountAPIService {
 
     private APIClient client;
     private AccountAPI api;
+    private Proxy proxy;
 
-    public AccountAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
+    public AccountAPIServiceImpl(APIConfiguration config, Proxy proxy) {
+        this.client = new APIClient(config,proxy);
         this.api = client.createService(AccountAPI.class);
+        this.proxy = proxy;
     }
 
     //查看账户持仓风险 Get account and position risk
