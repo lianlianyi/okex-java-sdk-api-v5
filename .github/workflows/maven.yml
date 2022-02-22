@@ -36,9 +36,54 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: >
+            [{
+                "id": "rdc-releases",
+                "username": "5f6d4f93e1cf498f3716aba1",
+                "password": "nWLXqk]=7ttn",
+                "configuration": {
+                  "httpConfiguration": {
+                    "all": {
+                      "usePreemptive": "true"
+                    }
+                  }
+                }
+              },
+            {
+                "id": "rdc-snapshots",
+                "username": "5f6d4f93e1cf498f3716aba1",
+                "password": "nWLXqk]=7ttn",
+                "configuration": {
+                  "httpConfiguration": {
+                    "all": {
+                      "usePreemptive": "true"
+                    }
+                  }
+                }
+              }]
+          mirrors: >
+            [{
+                "id": "mirror",
+                "name": "mirror",
+                "mirrorOf": "central,jcenter,!rdc-releases,!rdc-snapshots",
+                "url": "https://maven.aliyun.com/nexus/content/groups/public"
+              }]
+          profiles: >
+            [{
+                "id": "rdc",
+                "properties": {
+                  "altReleaseDeploymentRepository": "rdc-releases::default::https://packages.aliyun.com/maven/repository/2058707-release-5rdvs1/",
+                  "altSnapshotDeploymentRepository": "rdc-snapshots::default::https://packages.aliyun.com/maven/repository/2058707-snapshot-waccbD/"
+                }
+              }]
+          active_profiles: >
+            ["rdc"]
+          output_file: /home/runner/.m2/settings.xml
+
       - name: 构建上传okex组件
         run: |
           mvn clean deploy package -DskipTests
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_REPO }}
-          TZ: Asia/Shanghai
