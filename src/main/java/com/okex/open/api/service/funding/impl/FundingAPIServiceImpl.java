@@ -53,13 +53,19 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     @Override
     public JSONObject getWithdrawalHistory(String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,state,after,before,limit));
+        return this.client.executeSync(this.api.getWithdrawalHistory(ccy, state, after, before, limit));
     }
 
     //获取币种列表 Get Currencies
     @Override
     public JSONObject getCurrencies() {
         return this.client.executeSync(this.api.getCurrencies());
+    }
+
+    // 获取余币宝余额
+    @Override
+    public JSONObject savingBalance(String ccy) {
+        return this.client.executeSync(this.api.savingBalance(ccy));
     }
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption

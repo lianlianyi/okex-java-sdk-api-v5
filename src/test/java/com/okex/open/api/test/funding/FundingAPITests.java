@@ -19,7 +19,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     private static final Logger LOG = LoggerFactory.getLogger(FundingAPITests.class);
 
     private FundingAPIService fundingAPIService;
-    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("",0));
+    Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 55131));
 
 
     @Before
@@ -106,6 +106,11 @@ public class FundingAPITests extends FundingAPIBaseTests {
     public void getWithdrawalHistory() {
         JSONObject result = fundingAPIService.getWithdrawalHistory("BTC", "", "", "", "");
         toResultString(LOG, "result", result);
+    }
+
+    @Test
+    public void savingBalance() {
+        fundingAPIService.savingBalance(null);
     }
 
 

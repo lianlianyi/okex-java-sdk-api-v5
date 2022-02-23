@@ -10,16 +10,16 @@ public class FundingAPIBaseTests extends BaseTests {
     public APIConfiguration config() {
         APIConfiguration config = new APIConfiguration();
 
-        config.setEndpoint("https://www.okex.com/");
+        config.setEndpoint("https://www.okx.com/");
 
-        config.setApiKey("");
-        config.setSecretKey("");
-        config.setPassphrase("");
+        config.setApiKey("6de74671-3b69-415e-b7e6-b979dd382849");
+        config.setSecretKey("C24FF007CB38087B0E2058147ADBF82A");
+        config.setPassphrase("ku66Ur6dVNCYW5i");
 
 
         config.setPrint(true);
+        config.setSimulatedTrading(false);
         config.setI18n(I18nEnum.SIMPLIFIED_CHINESE);
-        config.setI18n(I18nEnum.ENGLISH);
         return config;
     }
 
