@@ -77,6 +77,19 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     //资金流水查询 Asset Bills Details
     @Override
     public JSONObject assetBillsDetails(String ccy, String type, String after, String before, String limit) {
-        return this.client.executeSync(this.api.assetBillsDetails(ccy,type,after,before,limit));
+        return this.client.executeSync(this.api.assetBillsDetails(ccy, type, after, before, limit));
     }
+
+    /**
+     * 获取账户资产估值
+     *
+     * @param ccy
+     * @return
+     */
+    @Override
+    public JSONObject assetValuation(String ccy) {
+        return this.client.executeSync(this.api.assetValuation(ccy));
+    }
+
+
 }

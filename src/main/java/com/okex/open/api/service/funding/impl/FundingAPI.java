@@ -35,6 +35,7 @@ interface FundingAPI {
     @GET("/api/v5/asset/currencies")
     Call<JSONObject> getCurrencies();
 
+    // 余币宝账户
     @GET("/api/v5/asset/saving-balance")
     Call<JSONObject> savingBalance(@Query("ccy") String ccy);
 
@@ -45,5 +46,16 @@ interface FundingAPI {
     //资金流水查询 Asset Bills Details
     @GET("/api/v5/asset/bills")
     Call<JSONObject> assetBillsDetails(@Query("ccy") String ccy, @Query("type") String type, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
+
+    /**
+     * 获取账户资产估值
+     * 资产估值对应的单位 BTC 、USDT
+     * USD 、CNY 、JPY、KRW、RUB、EUR
+     * VND 、IDR 、INR、PHP、THB、TRY
+     * AUD 、SGD 、ARS、SAR、AED、IQD
+     * 默认为 BTC 为单位的估值
+     */
+    @GET("/api/v5/asset/asset-valuation")
+    Call<JSONObject> assetValuation(@Query("ccy") String ccy);
 
 }

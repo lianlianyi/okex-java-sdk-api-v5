@@ -34,4 +34,7 @@ public interface FundingAPIService {
 
     //资金流水查询 Asset Bills Details
     JSONObject assetBillsDetails(String ccy, String type, String after, String before, String limit);
+
+    // 获取账户资产估值
+    JSONObject assetValuation(String ccy);
 }
