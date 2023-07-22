@@ -1,20 +1,16 @@
 package com.okex.open.api.service.marketData.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.market.result.BinanceCandlestick;
-import com.okex.open.api.enums.BinanceInternal;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
-
-import java.util.List;
 
 interface MarketDataAPI {
 
     //获取所有产品行情信息 Get Tickers
     @GET("/api/v5/market/tickers")
-    Call<JSONObject> getTickers(@Query("instType") String instType, @Query("uly") String uly);
+    Call<JSONObject> getTickers(@Query("instType") String instType);
 
     //获取单个产品行情信息 Get Ticker
     @GET("/api/v5/market/ticker")

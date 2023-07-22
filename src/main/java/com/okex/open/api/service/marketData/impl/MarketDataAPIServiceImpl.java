@@ -18,8 +18,8 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
 
     //获取所有产品行情信息 Get Tickers
     @Override
-    public JSONObject getTickers(String instType, String uly) {
-        return this.client.executeSync(this.marketDataAPI.getTickers(instType,uly));
+    public JSONObject getTickers(String instType) {
+        return this.client.executeSync(this.marketDataAPI.getTickers(instType));
     }
 
     //获取单个产品行情信息 Get Ticker

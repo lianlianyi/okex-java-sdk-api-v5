@@ -29,7 +29,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTickers() {
-        JSONObject result = this.marketDataAPIService.getTickers("FUTURES","BTC-USDT");
+        JSONObject result = this.marketDataAPIService.getTickers("FUTURES");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 
