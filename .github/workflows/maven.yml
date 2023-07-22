@@ -17,11 +17,11 @@ jobs:
       - uses: actions/checkout@v2
         name: Checkou
 
-      - name: 获取最后一条提交日志
-        id: git_log
-        uses: Edisonboy/latest-git-log-action@main
-        with:
-          tag: origin/master
+#      - name: 获取最后一条提交日志
+#        id: git_log
+#        uses: Edisonboy/latest-git-log-action@main
+#        with:
+#          tag: origin/master
 
       - name: Set up JDK 17
         uses: actions/setup-java@v2
